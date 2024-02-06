@@ -1,0 +1,331 @@
+#: kivy 1.10.1 
+#: import Factory kivy.factory.Factory
+
+<MyPopup>:
+    title:"History"
+    auto_dismiss:True
+    size_hint: 0.7, 0.7
+    BoxLayout:
+        orientation:'vertical'
+        size:root.width,root.height
+        background_color:0.5,0.5,0.5,1
+        padding: ('20dp', '20dp', '20dp', '20dp')
+        canvas.before:
+            Color:
+                rgba:self.background_color
+            RoundedRectangle:
+                size:self.size
+                radius:[10]
+                pos:self.pos
+        Label:
+            id:History
+            valign:"top"
+            text:root.history_show()
+            text_size:self.size
+            color:0,0,0,0.8
+            size_hint: 1,1 
+            halign:"left"    
+            
+
+        RoundedButton:
+            size_hint: 0.5,0.2
+            text:"Delete"
+            font_size:15
+            color:1,1,1,1
+            on_press:root.history_clear()
+
+<RoundedButton@Button>:
+    pos_hint: {'center_x': 0.5}
+    background_color:(0,0,0,0)
+    background_normal:''
+    canvas.before:
+        Color:
+            rgba:50/255,50/255,50/255,0.8
+        RoundedRectangle:
+            size:self.size
+            pos:self.pos
+            radius:[8]
+    
+
+
+<MyLayout>:
+    BoxLayout:
+        orientation:'vertical'
+        size:root.width,root.height
+        GridLayout:
+            size: root.width,root.height
+            rows:2 
+            AnchorLayout: 
+                anchor_x: 'center'
+                anchor_y: 'center'                
+                pos: self.parent.pos
+                size:self.parent.size
+                #size_hint:0.4,0.4
+                size_hint: 1,0.3
+                TextInput:
+                    id:Text_in
+                    text:'0' 
+                    multiline:False
+                    halign:"right"
+                    font_size: 30
+                    #padding: ('10dp', '40dp', '10dp', '0dp')
+                    readonly:True
+                    selection_color:170/255,170/255,170/255,0.7
+            GridLayout:
+                cols:4
+                rows:5
+                
+                Button:
+                    background_color:1,1,0,1
+                    text: "History"
+                    font_size:15
+                    color: 0 , 0 , 0 , 1
+                    bold:True
+                    on_press: Factory.MyPopup().open(),Factory.MyPopup().history_show()
+                Button:
+                    background_color:1,1,0,1
+                    text: 'C'
+                    font_size:20
+                    color: 0 , 0 , 0 , 1
+                    bold:True
+                    on_press: root.clear()
+                Button:
+                    background_color:1,1,0,1
+                    on_press:root.remove()
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.4,0.4
+                        Image:
+                            source:'backspace.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:1,1,0,1
+                    on_press:root.buttons("/")
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.3,0.3
+                        Image:
+                            source:'divide.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(7)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_7.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(8)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_8.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(9)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_9.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:1,1,0,1
+                    on_press:root.buttons("*")
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.35,0.35
+                        Image:
+                            source:'multiply.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(4)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_4.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(5)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_5.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(6)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_6.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:1,1,0,1
+                    on_press:root.buttons("-")
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.35,0.35
+                        Image:
+                            source:'minus.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(1)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_1.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(2)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_2.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(3)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter_3.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:1,1,0,
+                    on_press:root.buttons("+")
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.35,0.35
+                        Image:
+                            source:'plus.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    text:"AHURA"
+                    bold:True
+                    color:0,0,0,1
+                    font_size:15
+                    on_press:root.emailshow()
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    on_press:root.numbers(0)
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.5,0.5
+                        Image:
+                            source:'counter.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
+                Button:
+                    background_color:200/255,200/255,200/255,0.9
+                    text:"."
+                    bold:True
+                    color:0,0,0,1
+                    font_size:40
+                    on_press:root.dot(".")
+                Button:
+                    background_color:1,1,0,1
+                    on_press:root.equal()
+                    AnchorLayout: 
+                        anchor_x: 'center'
+                        anchor_y: 'center'
+                        pos: self.parent.pos
+                        size:self.parent.size
+                        size_hint:0.3,0.3
+                        Image:
+                            source:'equal.png'
+                            size_hint: self.parent.size_hint
+                            allow_stretch:True
+                            pos: self.parent.pos
